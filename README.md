@@ -31,9 +31,9 @@
   - Bộ nhớ Stack cố định, nếu chương trình sử dụng vượt quá khả năng lưu trữ của Stack sẽ sảy ra tình trạng tràn bộ nhớ (Stack overflow). Các trường hợp sảy ra như khởi tạo quá nhiều biến cục bộ, hàm đệ quy vô hạn...
 ### Heap
   - Vùng nhớ cấp phát động:
-      . Dùng cấp phát bộ nhớ động trong quá trình thực thi chương trình
-      . Điều này cho phép tạo ra và giải phóng vùng bộ nhớ theo nhu cầu, thích ứng với sự biến đổi của dữ liệu trong quá trình chương trình chạy.
-      . Các hàm như malloc(), calloc(), realloc(), và free() được dùng để cấp phát và giải phóng bộ nhớ trên Heap.
+      + Dùng cấp phát bộ nhớ động trong quá trình thực thi chương trình
+      + Điều này cho phép tạo ra và giải phóng vùng bộ nhớ theo nhu cầu, thích ứng với sự biến đổi của dữ liệu trong quá trình chương trình chạy.
+      + Các hàm như malloc(), calloc(), realloc(), và free() được dùng để cấp phát và giải phóng bộ nhớ trên Heap.
   - Vùng nhớ Heap được quản lý bởi lập trình viên trong C, hoặc C++.
   - Dữ liệu trong vùng Heap không tự hủy khi hàm thực hiện xong. Mà lập trình viên phải tự giải phóng vùng nhớ bằng câu lệnh free (trong C) và delete hoặc delete[] (Trong C++). Nếu không sẽ sảy ra hiện tượng rò rỉ bộ nhớ.
   - Nếu liên tục cấp phát vùng nhớ mà không giải phóng thì sẽ bị lỗi tràn vùng nhớ Heap (Heap overflow). Nếu khởi tạo một vùng nhớ quá lớn mà vùng nhớ Heap không thể lưu trữ một lần được sẽ bị lỗi khởi tạo vùng nhớ Heap thất bại.
