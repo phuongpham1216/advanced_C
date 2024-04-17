@@ -1,0 +1,50 @@
+
+
+
+
+
+#include <stdio.h>
+
+#define PRINT_MENU_ITEM(number, item) printf("%d. %s\n", number, item)
+
+#define PRINT_MENU(...)\
+    const char* items[] = {__VA_ARGS__};\
+    int n = sizeof(items) / sizeof(items[0]);\
+    for (int i=0; i<n; i++) {\
+    PRINT_MENU_ITEM(i+1, items[i]);\
+    }
+
+#define CASE_OPTION(number, funtion) case number: funtion(); break;
+
+#define HANDLE_OPTION(option, ...) \
+    switch (option) \
+    {\
+    __VA_ARGS__\    
+    default: printf("Invalid option!\n");\
+        break;\
+    }
+
+void feature1(){printf("Feature1 selected\n");}
+void feature2(){printf("Feature2 selected\n");}
+void feature3(){printf("Feature3 selected\n");}
+void feature4(){printf("Feature4 selected\n");}
+
+
+int main (void)
+{
+    PRINT_MENU("Option 1", "Option 2", "Option 3", "Option 4", "Exit");
+
+    int option;
+
+    scanf("%d", &option);
+
+    HANDLE_OPTION(option,
+    CASE_OPTION(1,feature1)
+    CASE_OPTION(2,feature2)
+    CASE_OPTION(3, feature3)
+    CASE_OPTION(4, feature4)
+    )
+
+    // return 0;
+
+}
