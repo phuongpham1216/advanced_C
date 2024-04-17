@@ -37,3 +37,27 @@
   - Vùng nhớ Heap được quản lý bởi lập trình viên trong C, hoặc C++.
   - Dữ liệu trong vùng Heap không tự hủy khi hàm thực hiện xong. Mà lập trình viên phải tự giải phóng vùng nhớ bằng câu lệnh free (trong C) và delete hoặc delete[] (Trong C++). Nếu không sẽ sảy ra hiện tượng rò rỉ bộ nhớ.
   - Nếu liên tục cấp phát vùng nhớ mà không giải phóng thì sẽ bị lỗi tràn vùng nhớ Heap (Heap overflow). Nếu khởi tạo một vùng nhớ quá lớn mà vùng nhớ Heap không thể lưu trữ một lần được sẽ bị lỗi khởi tạo vùng nhớ Heap thất bại.
+
+## Bài 5 Extern - Static - Volatile - Register
+
+### Extern:
+ - ex:
+      ```C
+      extern int var;
+      extern void delay (void);
+      ```
+ - Khai báo biến đã được sử dụng, tại một nơi khác, file khác. Giúp chương trình hiểu được biến, hoặc hàm đã được khai báo và sự ở một vị trí khác.
+
+### Static
+  - Static local variables: Sử dụng với biến cục bộ, biến khai báo bên trong hàm. Để nó giữ lại giá trị qua các lần gọi hàm. Và phạm vi của biến chỉ trong hàm đó.
+  - Static global variables: Sử dụng với biến toàn cục, biến khai báo bên ngoài hàm. Nó hạn chế phạm vi của biến chỉ sử dụng trong file nguồn hiện tại. Ứng dụng để thiết kế các file thư viện.
+  
+### Volatile
+  - Từ khóa trong C. Được sử dụng cho biến có thể thay đổi ngẫu nhiên, ngoài sự kiểm soát của chương trình.
+  - Ngăn chặn trình biên dịch tối ưu hóa hoặc xóa bỏ các thao tác trên biến đó, giữ cho các thao tác trên biến được thực hiện như đã định nghĩa.
+
+### Regiter
+  - Từ khóa sử dụng chỉ ra biến được sử dụng thường xuyên.
+  - Biến có thể được lưu trữ trong thanh ghi chứ không phải trong bộ nhớ Ram.
+  - Mục đích tăng tốc độ truy cập.
+  - ***Lưu ý:*** Việc sử dụng Register chỉ là một đề xuất cho trình biên dịch. Và không đảm bảo rằng biến được lưu trữ trong thanh ghi. Trong thực tế trình biên dịch có thể quyết định không tuân thủ đề xuất này.
