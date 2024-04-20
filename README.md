@@ -41,7 +41,7 @@
 ## Bài 5 Extern - Static - Volatile - Register
 
 ### Extern:
- - ex:
+ - eg:
       ```C
       extern int var;
       extern void delay (void);
