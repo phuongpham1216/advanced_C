@@ -1,0 +1,9 @@
+*.uvoptx
+*.uvprojx
+*.log
+*.scvd
+**/DebugConfig
+**/Listings
+**/Objects
+**/RTE
+*.uvguix.phuon
