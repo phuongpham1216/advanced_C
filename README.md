@@ -2,6 +2,70 @@
 ## Bài 1: Compiler - Macro
 ## Bài 2: STDARG - ASSERT
 ## Bài 3: Pointer
+
+  Trong ngôn ngữ lập trình C, Con trỏ `pointer` dùng để chứa địa chỉ bộ nhớ của một biến, hàm ...
+___
+### Biến con trỏ
+___
+  - Khai báo `int *ptr` : Thêm dấu * trước tên biến.
+  - Con trỏ `ptr` là một biến. Nhưng nó lưu giá trị là địa chỉ.
+  - Ép kiểu con trỏ.
+  ~~~~C
+  int *ptr = (int *)0x12233;
+  ~~~~
+  `*ptr` Lấy `giá trị` tại `địa chỉ` của con trỏ ptr.
+  -eg:  
+  ~~~C
+  #include <stdio.h>
+
+      int main (int argc, char const *argv[])
+      {
+          int var = 10;
+
+      printf("Dia chi var: %p\n", &var);
+
+          int *ptr = &var;
+
+      printf("Dia chi con tro ptr: %p\nGiá trị con trỏ ptr: %d\n", ptr, *ptr);
+          return 0;
+      }
+  ~~~
+  ~~~
+  Dia chi con tro ptr: 000000d7619ff8f4
+  Giá trị con trỏ ptr: 10
+  ~~~
+
+  ~~~C
+  int var = 10;
+  int *ptr = &var;
+  //Hai câu lệnh tương đương:
+  printf("Dia chi con tro ptr: %p\nGiá trị con trỏ ptr: %d\n", ptr, *ptr);
+  // Và
+  printf("Dia chi con tro ptr: %p\nGiá trị con trỏ ptr: %d\n", ptr,*(&var));,
+  ~~~
+
+___
+### Con trỏ hàm
+___
+
+eg:  
+~~~C
+void (*pheptoan)(int, int) = &tong;
+pheptoan(7,9);
+~~~
+- Khai báo con trỏ hàm.
+- Kiểu trả về `void`
+- Tham số truyền vào `int`, `int`. Viết `(int, int)` là cách rút gọn của `(int a, int b)` cách viết tường minh.
+- Gán giá trị của một đối tượng `pheptoan = &tong;` hoặc `pheptoan = tong;`
+- Con trỏ hàm phép toán trỏ đến hàm `tong` và truyền tham số vào hàm `tong`.
+
+Ứng dụng:
+- Làm input parameter của hàm khác. (Thêm ví dụ: .. )
+- 
+
+
+
+
 ## Bài 4: Memory layout
   Chương trình main.exe (Trên windown), main.hex (nạp vào vi điều khiển), được lưu trong ổ cứng hoặc Flash của vi điều khiển. Khi nhấn "run" chương trình (trên window) hoặc cấp nguồn cho vi điều khiển. Thì những chương trình này được copy vào Ram để thực thi.
 ### Text segment
