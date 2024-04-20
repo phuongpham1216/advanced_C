@@ -61,9 +61,45 @@ pheptoan(7,9);
 
 Ứng dụng:
 - Làm input parameter của hàm khác. (Thêm ví dụ: .. )
-- 
 
+### Con trỏ void
+Trỏ được đến các địa chỉ, int, char, float, ...
+Sử dụng cần phải ép kiểu.
+~~~C
+int i;
+void *ptr = &i;
+printf("Gia tri con tro: %d\n", *(int *)ptr);
+~~~
+> Cú pháp viết:
+>*(int *)ptr;
+> - Dấu * - Lấy giá trị tại địa chỉ con trỏ trỏ đến.
+> - (int *) - Ép kiểu con trỏ void về kiểu int.
+> - ptr - Tên con trỏ.
 
+___
+Ép kiểu con trỏ hàm:
+
+~~~C
+void tong(int a, intb){
+  printf("Tong %d va %d: %d\n", a, b, a+b);
+}
+
+void main(){
+  void *ptr;
+  ptr = &tong;
+  ((void (*)(int, int))ptr)(8, 9);
+}
+~~~
+~~~C
+> ptr : Tên con trỏ.  
+> ()ptr : () Ép kiểu con trỏ.  
+> (void (*))ptr: void (*) Ép kiểu con trỏ hàm void, nên không đặt tên.  
+> (void(*)(int,int))ptr: (int, int): Đối số truyền vào.  
+> (void(*)(int,int))ptr: Đây là con trỏ hàm.  
+> ((void(*)(int,int))ptr)(8, 9): Truyền tham số cho nó (8, 9).  
+~~~
+
+- "Thêm ví dụ void *array[]?
 
 
 ## Bài 4: Memory layout
