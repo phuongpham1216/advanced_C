@@ -58,5 +58,10 @@ int main() {
             printf("%s\n", error_message);
             // goto read_File;
         }
+
+    if (error_message != NULL) {
+        error_message=NULL;
+    }
+    return 0;
 }
 
