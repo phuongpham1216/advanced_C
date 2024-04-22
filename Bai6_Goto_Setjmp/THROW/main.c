@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include <setjmp.h>
-#include <stdlib.h> // Để sử dụng hàm free
-#include <string.h> // Để sử dụng hàm strlen và strcpy
+
+
+typedef enum {
+    DivideByZero = 1,
+    Divide_10,
+    OtherError
+} Error_id;
 
 jmp_buf buf;
 int exception_code;
@@ -12,24 +17,6 @@ char *error_code = NULL;
 #define THROW(x, warning)       \
         error_code = warning;   \
         longjmp(buf, (x));
-        
-
-typedef enum {
-    DivideByZero = 1,
-    Divide_10,
-    OtherError
-} Error_id;
-
-// /// from main.i
-// double divide(int a, int b) {
-//     if (b == 0) {
-//         error_code = "test cai";
-//         longjmp(buf, (DivideByZero));
-//     }
-//     return (double)a / b;
-// }
-
-// ///
 
 
 double divide(int a, int b) {
@@ -43,20 +30,10 @@ double divide(int a, int b) {
 }
 
 int main() {
-    // error_code = "Test thu xem nao, them chuoi!";
-    // printf("%s\n", error_code);
-    int a = 90;
-    int b = 0;
-    double result = 0.0;
 
-    // /// from main.i
-    // if ((exception_code = setjmp(buf)) == 0) {
-    //     result = divide(a, b);
-    //     printf("Result: %f\n", result);
-    // } else if (exception_code == (DivideByZero)) {
-    //     printf("Error message: %s\n", error_code);
-    // }
-    // ///
+    int a = 90;
+    int b = 8;
+    double result = 0.0;
 
     TRY {
         result = divide(a, b);
@@ -71,7 +48,7 @@ int main() {
 
     // Giải phóng bộ nhớ cho error_code nếu cần
     if (error_code != NULL) {
-        free(error_code);
+        error_code=NULL;
     }
 
     return 0;
