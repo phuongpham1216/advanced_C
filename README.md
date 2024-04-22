@@ -101,6 +101,8 @@ void main(){
 
 - "Thêm ví dụ void *array[]?
 
+Con trỏ NULL
+
 
 ## Bài 4: Memory layout
   Chương trình main.exe (Trên windown), main.hex (nạp vào vi điều khiển), được lưu trong ổ cứng hoặc Flash của vi điều khiển. Khi nhấn "run" chương trình (trên window) hoặc cấp nguồn cho vi điều khiển. Thì những chương trình này được copy vào Ram để thực thi.
@@ -161,3 +163,7 @@ void main(){
   - Biến có thể được lưu trữ trong thanh ghi chứ không phải trong bộ nhớ Ram.
   - Mục đích tăng tốc độ truy cập.
   - ***Lưu ý:*** Việc sử dụng Register chỉ là một đề xuất cho trình biên dịch. Và không đảm bảo rằng biến được lưu trữ trong thanh ghi. Trong thực tế trình biên dịch có thể quyết định không tuân thủ đề xuất này.
+
+
+## Bài 6: Goto - Setjmp.h
+
