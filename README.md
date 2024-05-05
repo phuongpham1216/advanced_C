@@ -1,108 +1,134 @@
 # advanced_C
-## Bài 1: Compiler - Macro
-## Bài 2: STDARG - ASSERT
-## Bài 3: Pointer
 
+<!--  -->
+
+<details><summary>Compiler - Macro</summary>
+<p>
+
+## Bài 1: Compiler - Macro
+
+</p></details>
+
+<!-- /////////////////////// -->
+
+<details><summary>STDARG - ASSERT</summary>
+<p>
+
+## Bài 2: STDARG - ASSERT
+
+</p></details>
+
+<!-- /////////////////////// -->
+
+<details><summary> Pointer </summary>
+<p>
+
+## Bài 3: Pointer
   Trong ngôn ngữ lập trình C, Con trỏ `pointer` dùng để chứa địa chỉ bộ nhớ của một biến, hàm ...
 ___
-### Biến con trỏ
+  ### Biến con trỏ
 ___
-  - Khai báo `int *ptr` : Thêm dấu * trước tên biến.
-  - Con trỏ `ptr` là một biến. Nhưng nó lưu giá trị là địa chỉ.
-  - Ép kiểu con trỏ.
-  ~~~~C
-  int *ptr = (int *)0x12233;
-  ~~~~
-  `*ptr` Lấy `giá trị` tại `địa chỉ` của con trỏ ptr.
-  -eg:  
+    - Khai báo `int *ptr` : Thêm dấu * trước tên biến.
+    - Con trỏ `ptr` là một biến. Nhưng nó lưu giá trị là địa chỉ.
+    - Ép kiểu con trỏ.
+    ~~~~C
+    int *ptr = (int *)0x12233;
+    ~~~~
+    `*ptr` Lấy `giá trị` tại `địa chỉ` của con trỏ ptr.
+    -eg:  
+    ~~~C
+    #include <stdio.h>
+
+        int main (int argc, char const *argv[])
+        {
+            int var = 10;
+
+        printf("Dia chi var: %p\n", &var);
+
+            int *ptr = &var;
+
+        printf("Dia chi con tro ptr: %p\nGiá trị con trỏ ptr: %d\n", ptr, *ptr);
+            return 0;
+        }
+    ~~~
+    ~~~
+    Dia chi con tro ptr: 000000d7619ff8f4
+    Giá trị con trỏ ptr: 10
+    ~~~
+
+    ~~~C
+    int var = 10;
+    int *ptr = &var;
+    //Hai câu lệnh tương đương:
+    printf("Dia chi con tro ptr: %p\nGiá trị con trỏ ptr: %d\n", ptr, *ptr);
+    // Và
+    printf("Dia chi con tro ptr: %p\nGiá trị con trỏ ptr: %d\n", ptr,*(&var));,
+    ~~~
+
+  ___
+  ### Con trỏ hàm
+  ___
+
+    eg:  
+    ~~~C
+    void (*pheptoan)(int, int) = &tong;
+    pheptoan(7,9);
+    ~~~
+    - Khai báo con trỏ hàm.
+    - Kiểu trả về `void`
+    - Tham số truyền vào `int`, `int`. Viết `(int, int)` là cách rút gọn của `(int a, int b)` cách viết tường minh.
+    - Gán giá trị của một đối tượng `pheptoan = &tong;` hoặc `pheptoan = tong;`
+    - Con trỏ hàm phép toán trỏ đến hàm `tong` và truyền tham số vào hàm `tong`.
+
+    Ứng dụng:
+    - Làm input parameter của hàm khác. (Thêm ví dụ: .. )
+
+  ### Con trỏ void
+  Trỏ được đến các địa chỉ, int, char, float, ...
+  Sử dụng cần phải ép kiểu.
   ~~~C
-  #include <stdio.h>
-
-      int main (int argc, char const *argv[])
-      {
-          int var = 10;
-
-      printf("Dia chi var: %p\n", &var);
-
-          int *ptr = &var;
-
-      printf("Dia chi con tro ptr: %p\nGiá trị con trỏ ptr: %d\n", ptr, *ptr);
-          return 0;
-      }
+  int i;
+  void *ptr = &i;
+  printf("Gia tri con tro: %d\n", *(int *)ptr);
   ~~~
-  ~~~
-  Dia chi con tro ptr: 000000d7619ff8f4
-  Giá trị con trỏ ptr: 10
-  ~~~
+  > Cú pháp viết:
+  >*(int *)ptr;
+  > - Dấu * - Lấy giá trị tại địa chỉ con trỏ trỏ đến.
+  > - (int *) - Ép kiểu con trỏ void về kiểu int.
+  > - ptr - Tên con trỏ.
+
+  ___
+  Ép kiểu con trỏ hàm:
 
   ~~~C
-  int var = 10;
-  int *ptr = &var;
-  //Hai câu lệnh tương đương:
-  printf("Dia chi con tro ptr: %p\nGiá trị con trỏ ptr: %d\n", ptr, *ptr);
-  // Và
-  printf("Dia chi con tro ptr: %p\nGiá trị con trỏ ptr: %d\n", ptr,*(&var));,
+  void tong(int a, intb){
+    printf("Tong %d va %d: %d\n", a, b, a+b);
+  }
+
+  void main(){
+    void *ptr;
+    ptr = &tong;
+    ((void (*)(int, int))ptr)(8, 9);
+  }
+  ~~~
+  ~~~C
+  > ptr : Tên con trỏ.  
+  > ()ptr : () Ép kiểu con trỏ.  
+  > (void (*))ptr: void (*) Ép kiểu con trỏ hàm void, nên không đặt tên.  
+  > (void(*)(int,int))ptr: (int, int): Đối số truyền vào.  
+  > (void(*)(int,int))ptr: Đây là con trỏ hàm.  
+  > ((void(*)(int,int))ptr)(8, 9): Truyền tham số cho nó (8, 9).  
   ~~~
 
-___
-### Con trỏ hàm
-___
+  - "Thêm ví dụ void *array[]?
 
-eg:  
-~~~C
-void (*pheptoan)(int, int) = &tong;
-pheptoan(7,9);
-~~~
-- Khai báo con trỏ hàm.
-- Kiểu trả về `void`
-- Tham số truyền vào `int`, `int`. Viết `(int, int)` là cách rút gọn của `(int a, int b)` cách viết tường minh.
-- Gán giá trị của một đối tượng `pheptoan = &tong;` hoặc `pheptoan = tong;`
-- Con trỏ hàm phép toán trỏ đến hàm `tong` và truyền tham số vào hàm `tong`.
+  Con trỏ NULL
 
-Ứng dụng:
-- Làm input parameter của hàm khác. (Thêm ví dụ: .. )
+</P></details>
+<!-- ///////////////////////////// -->
 
-### Con trỏ void
-Trỏ được đến các địa chỉ, int, char, float, ...
-Sử dụng cần phải ép kiểu.
-~~~C
-int i;
-void *ptr = &i;
-printf("Gia tri con tro: %d\n", *(int *)ptr);
-~~~
-> Cú pháp viết:
->*(int *)ptr;
-> - Dấu * - Lấy giá trị tại địa chỉ con trỏ trỏ đến.
-> - (int *) - Ép kiểu con trỏ void về kiểu int.
-> - ptr - Tên con trỏ.
-
-___
-Ép kiểu con trỏ hàm:
-
-~~~C
-void tong(int a, intb){
-  printf("Tong %d va %d: %d\n", a, b, a+b);
-}
-
-void main(){
-  void *ptr;
-  ptr = &tong;
-  ((void (*)(int, int))ptr)(8, 9);
-}
-~~~
-~~~C
-> ptr : Tên con trỏ.  
-> ()ptr : () Ép kiểu con trỏ.  
-> (void (*))ptr: void (*) Ép kiểu con trỏ hàm void, nên không đặt tên.  
-> (void(*)(int,int))ptr: (int, int): Đối số truyền vào.  
-> (void(*)(int,int))ptr: Đây là con trỏ hàm.  
-> ((void(*)(int,int))ptr)(8, 9): Truyền tham số cho nó (8, 9).  
-~~~
-
-- "Thêm ví dụ void *array[]?
-
-Con trỏ NULL
-
+<details><summary>Memory layout</summary>
+<p>
 
 ## Bài 4: Memory layout
   Chương trình main.exe (Trên windown), main.hex (nạp vào vi điều khiển), được lưu trong ổ cứng hoặc Flash của vi điều khiển. Khi nhấn "run" chương trình (trên window) hoặc cấp nguồn cho vi điều khiển. Thì những chương trình này được copy vào Ram để thực thi.
@@ -139,6 +165,12 @@ Con trỏ NULL
   - Vùng nhớ Heap được quản lý bởi lập trình viên trong C, hoặc C++.
   - Dữ liệu trong vùng Heap không tự hủy khi hàm thực hiện xong. Mà lập trình viên phải tự giải phóng vùng nhớ bằng câu lệnh free (trong C) và delete hoặc delete[] (Trong C++). Nếu không sẽ sảy ra hiện tượng rò rỉ bộ nhớ.
   - Nếu liên tục cấp phát vùng nhớ mà không giải phóng thì sẽ bị lỗi tràn vùng nhớ Heap (Heap overflow). Nếu khởi tạo một vùng nhớ quá lớn mà vùng nhớ Heap không thể lưu trữ một lần được sẽ bị lỗi khởi tạo vùng nhớ Heap thất bại.
+  
+<p></details>
+<!-- ///////////////////////// -->
+
+<details><summary>Extern - Static - Volatile - Register</summary>
+<p>
 
 ## Bài 5 Extern - Static - Volatile - Register
 
@@ -164,6 +196,58 @@ Con trỏ NULL
   - Mục đích tăng tốc độ truy cập.
   - ***Lưu ý:*** Việc sử dụng Register chỉ là một đề xuất cho trình biên dịch. Và không đảm bảo rằng biến được lưu trữ trong thanh ghi. Trong thực tế trình biên dịch có thể quyết định không tuân thủ đề xuất này.
 
+</p></details>
+
+<!-- /////////////////////// -->
+
+<details><summary>Goto - Setjmp</summary>
+<p>
 
 ## Bài 6: Goto - Setjmp.h
 
+</p></details>
+
+<!-- //////////////////////// -->
+
+<details><summary>Bitmask</summary>
+<p>
+
+## Bài 7: Bitmask
+
+</p></details>
+
+<!-- ///////////////////////// -->
+
+<details><summary>Struct - Union</summary>
+<p>
+
+## Bài 8: Struct - Union
+
+</p></details>
+
+<!-- ///////////////////////// -->
+
+<details><summary>JSON</summary>
+<p>
+
+## Bài 9: JSON
+
+  - JSON là viết tắt của "JavaScrip Oject Notation" (Ghi chú về đối tượng JavaScrip). Đây là một định dạng truyền tải dữ liệu phổ biến trong lập trình và giao tiếp giữa các máy chủ và trình duyệt web, cũng như giữa các hệ thống với nhau.
+  - JSON được thiết kế để dễ đọc và dễ viết cho con người, cũng như dễ dàng để phân tích và tạo ra cho máy tính. Nó sử dụng một cú pháp nhẹ dựa trên cặp "key - value", tương tự như các đối tượng mảng trong JavaScrip. Mỗi đối tượng JSON bao gồm một tập hợp các cặp "key" và "value", trong khi mỗi mảng JSON là một tập hợp các giá trị.
+
+1. Khái niệm:  
+   - ví dụ:
+   ```C
+    char *json = "
+    {
+      "name": "Jhon Doe",
+      "age":  30,
+      "city": "New York",
+      "isStutendt": false,
+      "grades": [85, 90, 78]
+    }
+    "
+   ```
+   > Bắt đầu chuỗi `JSON` là dấu `"`, kết thúc là dấu `"`
+   
+</p></details>
