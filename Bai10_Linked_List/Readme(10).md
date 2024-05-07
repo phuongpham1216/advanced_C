@@ -23,7 +23,7 @@
     ![xóa phần tử buoc1](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/XoaPhanTuThu2_Buoc1.jpg)
 2.  Coppy giá trị tại ô nhớ `0x09`, sang ô nhớ `0x05`, coppy giá trị tại ô nhớ `0x0D` sang ô nhớ `0x09`, và coppy giá trị tại ô nhớ `0x11` sang ô nhớ `0x0D`.
     ![xóa phần tử buoc2](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/XoaPhanTuThu2_Buoc2.jpg)
-3.  Xóa giá trị tại ô nhớ `0x0D` và giải phóng nó.
+3.  Xóa giá trị tại ô nhớ `0x11` và giải phóng nó.
     ![xóa phần tử buoc3](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/XoaPhanTuThu2_Buoc3.jpg)
 4.  Mảng mới nhận được còn 4 phần tử:
-5.  ![xóa phần tử kết quả](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/XoaPhanTuThu2_KetQua.jpg)
+    ![xóa phần tử kết quả](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/XoaPhanTuThu2_KetQua.jpg)
