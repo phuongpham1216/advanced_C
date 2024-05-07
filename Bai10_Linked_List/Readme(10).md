@@ -40,15 +40,16 @@
         ![Chèn vào phần tử thứ 3 buoc 3](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/ChenVaoPhanTuThu3_Buoc3.jpg)  
     4,  Ghi giá trị cần thêm vào ô nhớ thứ 3 tại địa chỉ `0x09`. Sẽ nhận được một mảng mới có giá trị như sau:
         ![Chèn vào phần tử thứ 3 buoc 3](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/ChenVaoPhanTuThu3_KetQua.jpg)  
+        
 -   Và tương tự thế, nếu mảng dữ liệu mà có nhiều phần tử hơn chẳng hạn 1000 phần tử thì...
 
-    Các bước xóa nó:
+    Các bước xóa một phần tử:
     ![Mang 1000 phan tu xoa](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/Mang1000_Xoa1.jpg)
     ![Mang 1000 phan tu xoa](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/Mang1000_Xoa2.jpg)
     ![Mang 1000 phan tu xoa](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/Mang1000_Xoa3.jpg)
     ![Mang 1000 phan tu xoa](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/Mang1000_Xoa4.jpg)
 
-    Các bước thêm nó:
+    Các bước thêm một phần tử:
     ![Mang 1000 phan tu them](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/Mang1000_Them1.jpg)
     ![Mang 1000 phan tu them](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/Mang1000_Them2.jpg)
     ![Mang 1000 phan tu them](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/Mang1000_Them3.jpg)
