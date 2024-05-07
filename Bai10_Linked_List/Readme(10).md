@@ -27,11 +27,11 @@
         ![xóa phần tử buoc3](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/XoaPhanTuThu2_Buoc3.jpg)  
     4,  Mảng mới nhận được còn 4 phần tử:
         ![xóa phần tử kết quả](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/XoaPhanTuThu2_KetQua.jpg)
-<!--  -->
+
 -   Và sau đó nếu cần chèn thêm một giá trị vào vị trí thứ 3 của mảng như sau:
     ![Chèn vào phẩn tủ thứ 3](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/ChenVaoPhanTuThu3.jpg)  
 -   Thì các bước thực hiện là:
-<!--  -->
+
     1,  Lấy thêm một ô nhớ tiếp theo có địa chỉ `0x11`.
         ![Chèn vào phần tử thứ 3 buoc 1](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/ChenVaoPhanTuThu3_Buoc1.jpg)  
     2,  Coppy giá trị tại ô nhớ `0x0D` sang ô nhớ `0x11`. Tiếp theo coppy giá trị tại ô nhớ `0x09` sang ô nhớ `0x0D`.
@@ -41,16 +41,15 @@
     4,  Ghi giá trị cần thêm vào ô nhớ thứ 3 tại địa chỉ `0x09`. Sẽ nhận được một mảng mới có giá trị như sau:
         ![Chèn vào phần tử thứ 3 buoc 3](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/ChenVaoPhanTuThu3_KetQua.jpg)  
 -   Và tương tự thế, nếu mảng dữ liệu mà có nhiều phần tử hơn chẳng hạn 1000 phần tử thì...
-<!--  -->
+
     Các bước xóa nó:
     ![Mang 1000 phan tu xoa](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/Mang1000_Xoa1.jpg)
     ![Mang 1000 phan tu xoa](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/Mang1000_Xoa2.jpg)
     ![Mang 1000 phan tu xoa](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/Mang1000_Xoa3.jpg)
     ![Mang 1000 phan tu xoa](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/Mang1000_Xoa4.jpg)
-<!--  -->
+
     Các bước thêm nó:
     ![Mang 1000 phan tu them](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/Mang1000_Them1.jpg)
     ![Mang 1000 phan tu them](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/Mang1000_Them2.jpg)
     ![Mang 1000 phan tu them](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/Mang1000_Them3.jpg)
     ![Mang 1000 phan tu them](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/Mang1000_Them4.jpg)
-<!--  -->
