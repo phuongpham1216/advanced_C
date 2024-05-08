@@ -58,7 +58,7 @@
 ### 3.  Linked list
 -   Như các ví dụ ở trên ta nhận thấy, sử dụng mảng để lưu các giá trị, sau đó cần thêm một phần tử nào đó, hoặc xóa bớt đi một số phần tử, thì quá trình diễn ra phức tạp và tốn thời gian xử lý.
 -   Để giải quyết vấn đề đó thì Linked list được sử dụng.
--   So với cấu trúc của mảng, Linked list là một mảng các cấu trúc dữ liệu giống nhau:
+-   So với cấu trúc của mảng, Linked list là một mảng các cấu trúc dữ liệu như sau:
     ![Linked List 1](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/Linked_list_1.jpg)
 -   Các node được liên kết vói nhau bằng các cho con trỏ của node thứ nhất trỏ đến địa chỉ ô nhớ đầu tiên của node thứ 2:
     ![Linked List 2](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/Linked_list_2.jpg)
