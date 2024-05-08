@@ -72,7 +72,7 @@
     ![Linked List them node cuoi list 2](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/Linked_list_Them_Node_Cuoi_List_2.jpg)
 
 -   Ví dụ chèn một node có địa chỉ `0xa3` vào vị trí thứ 2 của list:
-    ![List chen node vao vi tri thu 2_1](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/List_Chen_Vi_Tri_Thu_2_1.jpg)
+    ![List chen node vao vi tri thu 2_1](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/List_Chen_Vi_Tri_Thu_2_1.jpg)  
         Cấp phát vùng nhớ cho một node, có địa chỉ `0xa3`.
     ![List chen node vao vi tri thu 2_2](https://github.com/phuongpham1216/advanced_C/blob/main/Bai10_Linked_List/Practice/Slide/List_Chen_Vi_Tri_Thu_2_2.jpg)
         Cho con trỏ của node trước vào địa chỉ `0xa3`, gán con trỏ của node mới bằng giá trị của node phía sau `0xef`.
