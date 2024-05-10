@@ -81,7 +81,7 @@ return: none
 ================================================================
 */
 
-void push_front(node **array, int value){ 
+void pushFront(node **array, int value){ 
 
     node* temp;
     temp = createNode(value); // khoi tao node
@@ -108,9 +108,11 @@ output: Remove 1 node at begin
 return: none
 ================================================================
 */
-void pop_front(node **array){    
+void popFront(node **array){    
     node * temp;
     temp = *array;
+    if(listCheckEmpty(&temp)) return;
+
     *array = temp->next;
     free(temp);
 } // xoa node dau tien
@@ -124,7 +126,7 @@ output: List add 1 node
 return: none
 ================================================================
 */
-void push_back(node** array, int value)
+void pushBack(node** array, int value)
 {
     node* temp;
     temp = createNode(value); // khoi tao node
@@ -159,22 +161,30 @@ output: List remove 1 node
 return: none
 ================================================================
 */
-void pop_back(node** array)
+void popBack(node** array)
 {
     node* p, * temp;
     p = *array; // use p instead of array because we are using pointer, 
                 //use array will change the structure of linkedlist
-
-    // while (p->next->next != NULL)     // free the last node in the list
-    while (p->next->next != NULL)   //Kiem tra dia chi tai next cua next (con cho cua node tiep thep)
-    {
-        p = p->next;
+    if(listCheckEmpty(&p)) {    // Kiem tra list
+        return;
     }
 
-    temp = p->next;
-    p->next = NULL;
-    free(temp);
+    else if(p->next==NULL) {    // List co 1 node
+        *array = NULL;
+        free(p);
+    }
+    else {
+        while (p->next->next != NULL)   //Kiem tra dia chi tai next cua next (con cho cua node tiep thep)
+        {
+            p = p->next;
+        }
 
+        temp = p->next; //Node cuoi
+        p->next = NULL;
+        
+        free(temp); //Xoa node cuoi
+    }
 }
 
 /*==============================================================
@@ -185,7 +195,7 @@ output: none
 return: Value of node begin
 ================================================================
 */
-int front(node *array){
+int getFront(node *array){
     int value = array->value;
     return value;
 
@@ -199,7 +209,7 @@ output: none
 return: Value of node end
 ================================================================
 */
-int back(node *array){
+int getBack(node *array){
     int value;
     node* p, * temp;
     p = array; // use p instead of array because we are using pointer, 
@@ -223,7 +233,7 @@ output: none
 return: Value of node
 ================================================================
 */
-int get(node* array, int pos)
+int getPosition(node* array, int pos)
 {
     int i = 0;
  
@@ -242,6 +252,35 @@ int get(node* array, int pos)
     int value = array->value;
     return value;
 }
+
+/*==============================================================
+In gia tri cac Node trong List
+input:  list (dia chi cua list)
+
+output: In ra man hinh (=printf();)
+return: none
+================================================================
+*/
+void listDisplay(node* array)
+{
+    node *temp = array;
+    if(temp == NULL) {
+        printf("List chua co Node nao!\n");
+        return;
+    }
+    else {
+        int i=0;
+        printf("Cac Node cua List:\n");
+        while (temp!=NULL)
+        {
+            printf("-> Node %d = %d\n", i, temp->value);
+            i++;
+            temp=temp->next;
+        }
+        
+    }
+}
+
 
 // Home Work
 
@@ -264,15 +303,105 @@ void deletee(node **array, int pos); // xoa 1 node tai mot vi tri bat ky
 
 int main()
 {
-    int i, indexNode;
+    int key=0;
+    int value=0;
+    int vitri=0;
+
     node* arr = NULL;
-    push_back(&arr, 2);
-    push_back(&arr, 7);
-    push_back(&arr, 4);
-    push_back(&arr, 5);
-    push_back(&arr, 3);
-    push_back(&arr, 10);
+
+    printf("+++++++++++++++++++++++++++++++++++++++++\n");
+    listDisplay(arr);
+
+    while (1)   {
+        printf("=========================================\n");
+        printf("Cac lua chon thao tac voi list:\n");
+        printf("------------------------------------------\n");
+        printf("->>  Nhap vao <1> de thuc hien pushBack - Them node vao cuoi list.\n");
+        printf("->>  Nhap vao <2> de thuc hien popBack - Xoa node cuoi cung cua list.\n");
+        printf("->>  Nhap vao <3> de thuc hien pushFront - Them node vao dau cua list.\n");
+        printf("->>  Nhap vao <4> de thuc hien popFront - Xoa node dau tien cua list.\n");
+        printf("->>  Nhap vao <5> de thuc hien getFront - Doc gia tri tai node dau tien cua list.\n");
+        printf("->>  Nhap vao <6> de thuc hien getBack - Doc gia tri tai node cuoi cung cua list.\n");
+        printf("->>  Nhap vao <7> de thuc hien getPosition - Doc gia tri tai node co vi tri.\n");
+        printf("->>  Nhap vao <10> de thuc hien exit - Thoat chuong trinh.\n");
+        printf("=========================================\n");
+
+        scanf("%d", &key);
+        printf("Key vua nhap: %d\n", key);
+
+        switch (key)
+        {
+        case 1:
+            printf("Lua chon them node vao cuoi list.\n");
+            printf("Nhap data cua node: ");
+            scanf("%d", &value);
+            pushBack(&arr, value);
+            printf("*************************************\n");
+            listDisplay(arr);
+            break;
+        case 2:
+            printf("Lua chon xoa node cuoi cua list.\n");
+            popBack(&arr);
+            printf("*************************************\n");
+            listDisplay(arr);
+            break;
+        case 3:
+            printf("Lua chon Them node vao dau cua list.\n");
+            printf("Nhap data cua node: ");
+            scanf("%d", &value);
+            pushFront(&arr, value);
+            printf("*************************************\n");
+            listDisplay(arr);
+            break;
+        case 4:
+            printf("Lua chon Xoa node dau tien cua list.\n");
+            popFront(&arr);
+            printf("*************************************\n");
+            listDisplay(arr);
+            break;
+        case 5:
+            printf("Lua chon Doc gia tri tai node dau tien cua list.\n");
+            value = getFront(arr);
+            printf("*************************************\n");
+            printf("Gia tri tai node dau tien cua list = %d\n", value);
+            break;
+        case 6:
+            printf("Lua chon Doc gia tri tai node cuoi cung cua list.\n");
+            value = getBack(arr);
+            printf("*************************************\n");
+            printf("Gia tri tai node cuoi cung cua list = %d\n", value);
+            break;
+        case 7:
+            printf("Lua chon Doc gia tri tai node co vi tri.\n");
+            printf("Nhap vi tri cua node: ");
+            scanf("%d", &vitri);
+            value = getPosition(arr, vitri);
+            printf("*************************************\n");
+            printf("Gia tri cua node tai vi tri %d = %d\n", vitri, value);
+            break;
+        case 10:
+            return 0;
+            break;
+        default:
+            printf("Lua chon khong phu hop!\n");
+            break;
+        }
+        
+    }
+    return 0;
+}
     
+
+    // push_back(&arr, 2);
+    // push_back(&arr, 7);
+    // push_back(&arr, 4);
+    // push_back(&arr, 5);
+    // push_back(&arr, 3);
+    // push_back(&arr, 10);
+    
+
+    // ListDisplay(arr);
+    /*
     indexNode = size(&arr);
     printf("so node cua list = %d\n", indexNode);
 
@@ -315,6 +444,4 @@ int main()
     push_back(&arr, 200);
 
     printf("Gia tri cuoi cung cua list = %d\n",back(arr));
-    
-	return 0;
-}
+    */
