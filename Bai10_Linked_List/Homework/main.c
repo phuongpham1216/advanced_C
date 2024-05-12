@@ -37,6 +37,7 @@ int size(node **array){ // lay kich thuoc cua list
 
     if(listCheckEmpty(&*array))
         {
+            printf("Size = NULL - List is Empty!!!\n");
             return 0;
         }
 
@@ -50,8 +51,9 @@ int size(node **array){ // lay kich thuoc cua list
                 p = p->next;    // continue check next node until it a last node
                 i++;
             }
-
-            return i=i+1;
+            i++;
+            printf("Size of list = %d node!!!\n", i);
+            return i;
         }
 } 
 
@@ -188,6 +190,65 @@ void popBack(node** array)
 }
 
 /*==============================================================
+Them node vao vi tri bat ky cua list
+input:  list (dia chi cua list)
+        value: gia tri cua node
+        position: vi tri node 
+
+output: add node in list
+return: none
+================================================================
+*/
+void insert(node **array, int value, int pos) {
+
+    if (listCheckEmpty(&*array))
+    {
+        *array = createNode(value);
+        return;
+    }
+
+    if(pos==0){
+        pushFront(&*array, value);
+        return;
+    } 
+
+    int n = size(&*array);
+    
+    if(pos>=n){
+        pushBack(&*array, value);
+        return;
+    }
+
+    node *newNode = createNode(value);
+    node *p = *array;
+
+    for(int i=0; i<pos-1; i++)
+    {
+        printf("Xu ly chen vao giua list\n");
+        p = p->next;
+    }
+    printf("Chen Node vao vi tri = %d\n", 1);
+    newNode->next=p->next;
+    p->next = newNode;
+
+} // them 1 node vao mot vi tri bat ky
+
+
+/*==============================================================
+Xoa node vao vi tri bat ky cua list
+input:  list (dia chi cua list)
+        position: vi tri node
+
+output: remove 1 node in list
+return: none
+================================================================
+*/
+void deletee(node **array, int pos) {
+
+} // xoa 1 node tai mot vi tri bat ky
+
+
+/*==============================================================
 Doc gia tri cua node dau tien
 input:  list (dia chi cua list)
 
@@ -289,8 +350,8 @@ void listDisplay(node* array)
 // int front(node *array); // lay gia tri cua node dau tien
 // int back(node *array); // lay gia tri cua node cuoi cung
 
-void insert(node **array, int value, int pos); // them 1 node vao mot vi tri bat ky
-void deletee(node **array, int pos); // xoa 1 node tai mot vi tri bat ky
+// void insert(node **array, int value, int pos); // them 1 node vao mot vi tri bat ky
+// void deletee(node **array, int pos); // xoa 1 node tai mot vi tri bat ky
 
 // int size(node **array); // lay kich thuoc cua list
 
@@ -323,6 +384,7 @@ int main()
         printf("->>  Nhap vao <5> de thuc hien getFront - Doc gia tri tai node dau tien cua list.\n");
         printf("->>  Nhap vao <6> de thuc hien getBack - Doc gia tri tai node cuoi cung cua list.\n");
         printf("->>  Nhap vao <7> de thuc hien getPosition - Doc gia tri tai node co vi tri.\n");
+        printf("->>  Nhap vao <8> de thuc hien insert - Chen node vao vi tri cua list.\n");
         printf("->>  Nhap vao <10> de thuc hien exit - Thoat chuong trinh.\n");
         printf("=========================================\n");
 
@@ -379,6 +441,16 @@ int main()
             printf("*************************************\n");
             printf("Gia tri cua node tai vi tri %d = %d\n", vitri, value);
             break;
+        case 8:
+            printf("Lua chon Chen node vao vi tri cua list.\n");
+            printf("Nhap gia tri cua node: ");
+            scanf("%d", &value);
+            printf("Nhap vi tri cua node: ");
+            scanf("%d", &vitri);
+            insert(&arr, value, vitri);
+            printf("*************************************\n");
+            listDisplay(arr);
+            break;
         case 10:
             return 0;
             break;
@@ -390,58 +462,3 @@ int main()
     }
     return 0;
 }
-    
-
-    // push_back(&arr, 2);
-    // push_back(&arr, 7);
-    // push_back(&arr, 4);
-    // push_back(&arr, 5);
-    // push_back(&arr, 3);
-    // push_back(&arr, 10);
-    
-
-    // ListDisplay(arr);
-    /*
-    indexNode = size(&arr);
-    printf("so node cua list = %d\n", indexNode);
-
-    for(i=0; i<indexNode; i++){
-        printf("Value test: %d\n", get(arr, i));
-    }
-    // printf("Value test: %d\n", get(arr, 2));
-    // printf("Value test: %d\n", get(arr, 0));
-    // printf("Value test: %d\n", get(arr, 5));
-
-    // pop_back(&arr);
-
-    // indexNode = size(&arr);
-    // printf("so node cua list = %d\n", indexNode);
-
-    // for(i=0; i<indexNode; i++){
-    //     printf("Value test: %d\n", get(arr, i));
-    // }
-
-    // push_front(&arr, 50);
-
-    // indexNode = size(&arr);
-    // printf("so node cua list = %d\n", indexNode);
-
-    // for(i=0; i<indexNode; i++){
-    //     printf("Value test: %d\n", get(arr, i));
-    // }
-
-    pop_front(&arr);
-
-    indexNode = size(&arr);
-    printf("so node cua list = %d\n", indexNode);
-
-    for(i=0; i<indexNode; i++){
-        printf("Value test: %d\n", get(arr, i));
-    }
-
-    printf("Gia tri dau tien cua list = %d\n",front(arr));
-
-    push_back(&arr, 200);
-
-    printf("Gia tri cuoi cung cua list = %d\n",back(arr));
-    */
