@@ -9,6 +9,8 @@ typedef struct node
     struct node* next;
 }node;
 
+int getPosition(node* array, int pos);
+
 /*==============================================================
 Funtion check List is empty
 
@@ -199,7 +201,7 @@ output: add node in list
 return: none
 ================================================================
 */
-void insert(node **array, int value, int pos) {
+void insertNode(node **array, int value, int pos) {
 
     if (listCheckEmpty(&*array))
     {
@@ -222,12 +224,13 @@ void insert(node **array, int value, int pos) {
     node *newNode = createNode(value);
     node *p = *array;
 
-    for(int i=0; i<pos-1; i++)
+    int i;
+    for(i=0; i<pos-1; i++)
     {
         printf("Xu ly chen vao giua list\n");
         p = p->next;
     }
-    printf("Chen Node vao vi tri = %d\n", 1);
+    printf("Chen Node vao vi tri = %d\n", i);
     newNode->next=p->next;
     p->next = newNode;
 
@@ -243,7 +246,38 @@ output: remove 1 node in list
 return: none
 ================================================================
 */
-void deletee(node **array, int pos) {
+void deleteNode(node **array, int pos) {
+    node *p = *array;
+    node *temp;
+    if (listCheckEmpty(&p)){
+        printf("List Empty\n");
+        return;
+    }
+    if(pos<=1){
+        printf("Xoa node tai vi tri dau\n");
+        popFront(&p);
+        return;
+    }
+    
+    int n = size(&p);
+    if (pos>=n)
+    {
+        printf("Xoa node tai vi tri cuoi\n");
+        popBack(&p);
+        return;
+    }
+    
+    int i;
+    for(i=0; i<pos-1; i++){
+        temp = p;
+        p=p->next;
+    }
+    printf("Xoa node vi tri = %d\n", i+1);
+
+    printf("Gia tri tai vi tri xoa = %d\n",p->value);
+    
+    temp->next=p->next;
+    free(p);
 
 } // xoa 1 node tai mot vi tri bat ky
 
@@ -325,14 +359,14 @@ return: none
 void listDisplay(node* array)
 {
     node *temp = array;
-    if(temp == NULL) {
+    if(listCheckEmpty(&temp)) {
         printf("List chua co Node nao!\n");
         return;
     }
     else {
         int i=0;
         printf("Cac Node cua List:\n");
-        while (temp!=NULL)
+        while ((temp!=NULL)&&(i<10))
         {
             printf("-> Node %d = %d\n", i, temp->value);
             i++;
@@ -384,7 +418,8 @@ int main()
         printf("->>  Nhap vao <5> de thuc hien getFront - Doc gia tri tai node dau tien cua list.\n");
         printf("->>  Nhap vao <6> de thuc hien getBack - Doc gia tri tai node cuoi cung cua list.\n");
         printf("->>  Nhap vao <7> de thuc hien getPosition - Doc gia tri tai node co vi tri.\n");
-        printf("->>  Nhap vao <8> de thuc hien insert - Chen node vao vi tri cua list.\n");
+        printf("->>  Nhap vao <8> de thuc hien insert Node - Chen node vao vi tri cua list.\n");
+        printf("->>  Nhap vao <9> de thuc hien delete Node - Xoa node tai vi tri cua list.\n");
         printf("->>  Nhap vao <10> de thuc hien exit - Thoat chuong trinh.\n");
         printf("=========================================\n");
 
@@ -447,7 +482,15 @@ int main()
             scanf("%d", &value);
             printf("Nhap vi tri cua node: ");
             scanf("%d", &vitri);
-            insert(&arr, value, vitri);
+            insertNode(&arr, value, vitri);
+            printf("*************************************\n");
+            listDisplay(arr);
+            break;
+         case 9:
+            printf("Lua chon Xoa node tai vi tri cua list.\n");
+            printf("Nhap vi tri cua node: ");
+            scanf("%d", &vitri);
+            deleteNode(&arr, vitri);
             printf("*************************************\n");
             listDisplay(arr);
             break;
