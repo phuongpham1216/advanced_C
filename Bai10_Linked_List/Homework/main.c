@@ -53,7 +53,6 @@ int size(node **array){ // lay kich thuoc cua list
                 p = p->next;    // continue check next node until it a last node
                 i++;
             }
-            i++;
             printf("Size of list = %d node!!!\n", i);
             return i;
         }
@@ -113,8 +112,7 @@ return: none
 ================================================================
 */
 void popFront(node **array){    
-    node * temp;
-    temp = *array;
+    node * temp = *array;
     if(listCheckEmpty(&temp)) return;
 
     *array = temp->next;
@@ -255,7 +253,7 @@ void deleteNode(node **array, int pos) {
         popFront(&p);
     }
     else{
-        for(int i=1; i<pos-2;i++){
+        for(int i=1; i<pos-1;i++){
             p=p->next;
         }
         //p : Tai pos-1
