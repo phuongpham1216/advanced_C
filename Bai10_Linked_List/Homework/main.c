@@ -45,7 +45,7 @@ int size(node **array){ // lay kich thuoc cua list
 
         else                // if array has some node
         {
-            int i=0;  // Dem so node
+            int i=1;  // Dem so node
             node* p = *array;   // use p instead of array because we are using pointer, 
                                 //use array will change the structure of linkedlist
             while (p->next != NULL) // which mean the current node is not the last node
@@ -248,36 +248,22 @@ return: none
 */
 void deleteNode(node **array, int pos) {
     node *p = *array;
-    node *temp;
-    if (listCheckEmpty(&p)){
-        printf("List Empty\n");
-        return;
-    }
-    if(pos<=1){
+    int n = size(&p);
+    if((pos<1)||(pos>n)) return;    //Ko xoa
+    if(pos==1){
         printf("Xoa node tai vi tri dau\n");
         popFront(&p);
-        return;
     }
-    
-    int n = size(&p);
-    if (pos>=n)
-    {
-        printf("Xoa node tai vi tri cuoi\n");
-        popBack(&p);
-        return;
+    else{
+        for(int i=1; i<pos-2;i++){
+            p=p->next;
+        }
+        //p : Tai pos-1
+        node *temp = p->next;
+        // Cho pos-1 ket noi vs pos+1
+        p->next=temp->next;
+        free(temp); // Xoa node tai pos
     }
-    
-    int i;
-    for(i=0; i<pos-1; i++){
-        temp = p;
-        p=p->next;
-    }
-    printf("Xoa node vi tri = %d\n", i+1);
-
-    printf("Gia tri tai vi tri xoa = %d\n",p->value);
-    
-    temp->next=p->next;
-    free(p);
 
 } // xoa 1 node tai mot vi tri bat ky
 
@@ -364,7 +350,7 @@ void listDisplay(node* array)
         return;
     }
     else {
-        int i=0;
+        int i=1;
         printf("Cac Node cua List:\n");
         while ((temp!=NULL)&&(i<10))
         {
@@ -403,6 +389,13 @@ int main()
     int vitri=0;
 
     node* arr = NULL;
+
+    pushBack(&arr, 2);
+    pushBack(&arr, 7);
+    pushBack(&arr, 4);
+    pushBack(&arr, 5);
+    pushBack(&arr, 3);
+    pushBack(&arr, 10);
 
     printf("+++++++++++++++++++++++++++++++++++++++++\n");
     listDisplay(arr);
