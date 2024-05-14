@@ -82,11 +82,14 @@ output: Remove 1 node at begin
 return: none
 ================================================================
 */
-void popFront(node **array){    
+void popFront(node **array){   
+
     node * temp = *array;
+
     if(listCheckEmpty(&temp)) return;
 
     *array = temp->next;
+
     free(temp);
 } // xoa node dau tien
 
@@ -135,23 +138,22 @@ return: none
 ================================================================
 */
 void deleteNode(node **array, int pos) {
-    node *p = *array;
-    int n = size(&p);
+    node **p = &*array;
+    int n = size(p);
     if((pos<1)||(pos>n)) return;    //Ko xoa
     if(pos==1){
-        printf("Xoa node tai vi tri dau\n");
-        popFront(&p);
+        popFront(p);
     }
     else{
         int i;
         for(i=1; i<pos-1;i++){
-            p=p->next;
+            *p=(*p)->next;
         }
         printf("dang xoa node tai vi tri: %d", i+1);
         //p : Tai pos-1
-        node *temp = p->next;
+        node *temp = (*p)->next;
         // Cho pos-1 ket noi vs pos+1
-        p->next=temp->next;
+        (*p)->next=temp->next;
         free(temp); // Xoa node tai pos
     }
 
@@ -168,6 +170,7 @@ return: none
 */
 void listDisplay(node* array)
 {
+    printf("Gia tri array truyen vao = %d\n", array);
     node *temp = array;
     if(listCheckEmpty(&temp)) {
         printf("List chua co Node nao!\n");
@@ -178,6 +181,7 @@ void listDisplay(node* array)
         printf("Cac Node cua List:\n");
         while ((temp!=NULL)&&(i<10))
         {
+            printf("Gia tri con tro = %d", temp);
             printf("-> Node %d = %d\n", i, temp->value);
             i++;
             temp=temp->next;
@@ -200,7 +204,7 @@ int main()
     pushBack(&arr, 5);
     pushBack(&arr, 3);
     pushBack(&arr, 10);
-
+    printf("Gia tri array truyen vao = %d\n", arr);
     printf("+++++++++++++++++++++++++++++++++++++++++\n");
     listDisplay(arr);
      while (1)   {
