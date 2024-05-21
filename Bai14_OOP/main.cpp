@@ -8,6 +8,11 @@ private:
     string name;
     unsigned int age;
     unsigned int id;
+
+protected:
+    int x;
+    int y;
+
 public:
     Person()
     {
@@ -32,11 +37,32 @@ public:
     }
 };
 
+class Engineer : private Person
+{
+private:
+    string company;
+    string role;
+    
+public:
+    void disPlay ()
+    {
+        x = 10;
+        cout << "x: " << x << endl;
+    }
+
+};
+
+
+
 int main(int argc, char const *argv[])
 {
     Person p1;
     Person p2;
     Person p3;
+
+    Engineer e1;
+    
+    e1.disPlay();
 
     p1.setName("Phuong");
     cout << "name: " << p1.getName() << endl;
