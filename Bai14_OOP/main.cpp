@@ -44,15 +44,16 @@ private:
     string role;
     
 public:
-    void disPlay ()
-    {
-        x = 10;
-        cout << "x: " << x << endl;
-    }
+    void disPlay ();
+    
 
 };
 
-
+void Engineer::disPlay()
+{
+        x = 10;
+        cout << "x: " << x << endl;
+}
 
 int main(int argc, char const *argv[])
 {
