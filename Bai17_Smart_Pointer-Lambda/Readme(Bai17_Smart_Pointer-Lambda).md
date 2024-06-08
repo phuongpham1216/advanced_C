@@ -37,3 +37,24 @@
 -   weak_ptr có một phương thức là lock(), mà trả về một shared_ptr.
 -   Nếu shared_ptr mà weak_ptr theo dõi vẫn tồn tại, lock() sẽ trả về một shared_ptr hợp lệ có thể truy cập đối tượng.
 -   Ngược lại, nếu shared_ptr đã bị giải phóng, lock() sẽ trả về một shared_ptr rỗng.
+
+
+### Lambda
+-   Lambda là một tính năng mạnh mẽ được thêm vào ngôn ngữ lập trình C++ từ phiên bản C++11.
+-   Lambda cho phép định nghĩa hàm ngắn gọn (anonymous function) mà không cần phải viết một hàm riêng biệt.
+-   Cú pháp của Lambda rất linh hoạt và có thể được sử dụng để viết mã ngắn gọn và dễ đọc.
+```C
+[capture](parameters) -> return_type {
+    // function body
+}
+```
+-   Capture: Cho phép bắt giữ biến từ môi trường xung quanh vào lambda.
+    +   []: Không bắt giữ bất kỳ biến nào từ môi trường xung quanh.
+    +   [var]: Bắt giữ biến var theo giá trị.
+    +   [&var]: Bắt giữ biến var theo tham chiếu.
+    +   [=]: Bắt giữ tất cả các biến theo giá trị.
+    +   [&]: Bắt giữ tất cả các biến theo tham chiếu.
+
+-   Parameters (parameters): Tương tự như định nghĩa hàm, có thể bao gồm các tham số của lambda.
+-   Return type (return_type): Kiểu dữ liệu trả về của lambda. Có thể bị bỏ qua nếu không cần.
+-   Function body: Đặt trong dấu ngoặc nhọn {} và chứa mã nguồn thực thi của lambda.
